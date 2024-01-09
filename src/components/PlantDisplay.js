@@ -1,17 +1,26 @@
-export default function PlantDisplay({ plant }) {
-  if (!plant) {
-    return <p>No plant data available.</p>;
+import React from 'react';
+
+const PlantDisplay = ({ plant }) => {
+  if (!plant || plant.data.length === 0) {
+    return <p>No plant data available</p>;
   }
 
   return (
-    <>
-      <h1>{plant?.common_name || "Common Name Not Available"}</h1>
-      <p>{plant?.scientific_name[0] || "Scientific Name Not Available"}</p>
-      <h2>{plant?.watering || "Watering Information Not Available"}</h2>
-      <h2>{plant?.sunlight[0] || "Sunlight Information Not Available"}</h2>
-      <h2>{plant?.hardiness?.min || "Hardiness Information Not Available"}</h2>
-      <h2>{plant?.cycle || "Cycle Information Not Available"}</h2>
-      <img src={plant?.default_image?.medium_url} alt={plant?.id || "Plant Image"} />
-    </>
+    <div>
+      {plant.data.map((plantInfo) => (
+        <div key={plantInfo.id} className="plant-card">
+          <h2>{plantInfo.common_name}</h2>
+          <p>Scientific Name: {plantInfo.scientific_name.join(', ')}</p>
+          <p>Cycle: {plantInfo.cycle}</p>
+          <p>Watering: {plantInfo.watering}</p>
+          <p>Sunlight: {plantInfo.sunlight}</p>
+          {plantInfo.default_image && plantInfo.default_image.thumbnail && (
+            <img src={plantInfo.default_image.thumbnail} alt={plantInfo.common_name} />
+          )}
+        </div>
+      ))}
+    </div>
   );
-}
+};
+
+export default PlantDisplay;

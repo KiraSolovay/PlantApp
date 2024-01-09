@@ -1,30 +1,32 @@
-import { useState } from 'react';
 
-export default function Form(props) {
-  const [formData, setFormData] = useState({
-    searchterm: ""
-  });
+import React, { useState } from 'react';
 
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+const Form = ({ getPlant }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.plantSearch(formData.data); // Fix the property name here
+    getPlant(searchTerm);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Plant Search:
         <input
           type="text"
-          name="searchterm"
-          onChange={handleChange}
-          value={formData.searchterm} // Fix the property name here
+          value={searchTerm}
+          onChange={handleInputChange}
+          placeholder="Enter plant name"
         />
-        <input type="submit" value="Plant Search" />
-      </form>
-    </div>
+      </label>
+      <button type="submit">Search</button>
+    </form>
   );
-}
+};
+
+export default Form;
