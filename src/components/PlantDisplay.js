@@ -7,6 +7,7 @@ const PlantDisplay = ({ plant }) => {
 
   return (
     <div>
+      <p>showing results {plant.from} to {plant.to} on page {plant.current_page} of {plant.last_page} </p>
       {plant.data.map((plantInfo) => (
         <div key={plantInfo.id} className="plant-card">
           <h2>{plantInfo.common_name}</h2>
@@ -19,6 +20,7 @@ const PlantDisplay = ({ plant }) => {
           )}
         </div>
       ))}
+      <p>Results per page: {plant.data.per_page}</p>
     </div>
   );
 };
