@@ -40,6 +40,7 @@ const Form = ({ getPlant }) => {
         />
         <input 
             type="number"
+            min={1}
             value = {currentPage}
             onChange={handleNumberInputChange}
             placeholder="Enter page number"
