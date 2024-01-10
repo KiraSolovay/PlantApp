@@ -29,9 +29,10 @@ const Form = ({ getPlant }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
       <label>
-        <h1>Plant Search:</h1>
+        
+        <h1>Plant Search and Page Number:</h1>
         <input
           type="text"
           value={searchTerm}
