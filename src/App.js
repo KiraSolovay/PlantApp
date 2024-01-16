@@ -18,7 +18,7 @@ function App() {
     try {
       setLoading(true);
       // installed axios per Perenual Documentation
-      const response = await axios.get(`https://perenual.com/api/species-list?key=${apiKey}&q=${searchTerm}&page=${page}`);
+      const response = await axios.get(`https://perenual.com/api/species-list?key=${apiKeyBackup}&q=${searchTerm}&page=${page}`);
       setData(response.data);
       setError(null); // Reset error state on successful fetch
     } catch (error) {

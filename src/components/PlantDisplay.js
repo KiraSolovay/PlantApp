@@ -17,7 +17,7 @@ const PlantDisplay = ({ plant }) => {
             <p>Watering: {plantInfo.watering}</p>
             <p>Sunlight: {plantInfo.sunlight}</p>
             {plantInfo.default_image && plantInfo.default_image.thumbnail && (
-              <img src={plantInfo.default_image.thumbnail} alt={plantInfo.common_name} />
+              <img className="photos" src={plantInfo.default_image.thumbnail} alt={plantInfo.common_name} />
             )}
           </div>
         ))}
